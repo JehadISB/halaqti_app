@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/constants/colors.dart';
+import 'package:halaqti_app/widgets/custom_navigation_bar.dart';
+import 'package:halaqti_app/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -6,68 +9,15 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: KSecondryColor,
       appBar: AppBar(
-        title: Text("hlaqati app"),
-        backgroundColor: Colors.cyan[100],
+        title: const Text("hlaqati app"),
+        backgroundColor: KMainColor,
       ),
-      body: SafeArea(child: HomeViewBody()),
-    );
-  }
-}
-
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 240,
-          child: CarouselView(
-              itemSnapping: true,
-              elevation: 4,
-              padding: EdgeInsets.all(8),
-              itemExtent: MediaQuery.of(context).size.width - 32,
-              children: List.generate(8, (int index) {
-                return Container(
-                  color: Colors.amber,
-                  child: Image.network(
-                    "https://tajalquran.com/store/1/koran-holy-book-muslims_44074-2686.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                );
-              })),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          height: 200,
-          decoration: BoxDecoration(
-              color: Colors.cyan[100],
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, mainAxisSpacing: 5, crossAxisSpacing: 5),
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 50,
-                    color: Colors.cyanAccent,
-                  );
-                }),
-          ),
-        ),
-      ],
+      body: const SafeArea(
+        child: HomeViewBody(),
+      ),
+      bottomNavigationBar: const CusotmBottomNavigationBar(),
     );
   }
 }
