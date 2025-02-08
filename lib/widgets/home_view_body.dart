@@ -11,18 +11,18 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 240,
           child: CustomCarouselView(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Expanded(
           child: Container(
             padding: const EdgeInsets.all(10),
             // height: (MediaQuery.of(context).size.height) * 0.4,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: KBackgroundColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -32,9 +32,10 @@ class HomeViewBody extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 15,
                       crossAxisSpacing: 15,
@@ -52,7 +53,7 @@ class HomeViewBody extends StatelessWidget {
                                 fit: BoxFit.fill,
                               ),
                             ),
-                            Expanded(child: Text("الطلاب"))
+                            const Expanded(child: Text("الطلاب"))
                           ],
                         ),
                         color: Colors.cyanAccent,

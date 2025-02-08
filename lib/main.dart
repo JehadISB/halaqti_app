@@ -11,9 +11,10 @@ class HalaqtiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomeView(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: "Alexandria"),
     );
   }
 }
