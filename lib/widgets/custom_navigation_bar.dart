@@ -18,6 +18,7 @@ class CusotmBottomNavigationBar extends StatelessWidget {
               backgroundColor: Colors.white,
               activeColor: Colors.amber,
               tabBackgroundColor: KMainColor,
+              gap: 8,
               //===========
               // rippleColor: Colors
               //     .grey[800]!, // tab button ripple color when pressed
@@ -43,17 +44,19 @@ class CusotmBottomNavigationBar extends StatelessWidget {
               //     .withOpacity(0.1), // selected tab background color
               // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               tabs: [
+                GButton(icon: Icons.rule),
                 GButton(
-                  gap: 8,
-                  icon: Icons.home,
-                  text: "الرئيسية",
+                  icon: Icons.book,
+                  text: "المناهج",
                 ),
                 GButton(
                   icon: Icons.person_search,
+                  text: "تحضير الطلاب",
+                ),
+                GButton(
+                  icon: Icons.home,
                   text: "الرئيسية",
                 ),
-                GButton(icon: Icons.rule),
-                GButton(icon: Icons.book),
               ]),
         ),
       ],

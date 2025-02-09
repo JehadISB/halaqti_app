@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/constants/colors.dart';
+import 'package:halaqti_app/widgets/custom_appBar.dart';
 import 'package:halaqti_app/widgets/custom_navigation_bar.dart';
 import 'package:halaqti_app/widgets/home_view_body.dart';
 
@@ -8,16 +9,13 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: KSecondryColor,
-      appBar: AppBar(
-        title: const Text("hlaqati app"),
-        backgroundColor: KMainColor,
-      ),
-      body: const SafeArea(
+      appBar: CustomAppBar(),
+      body: SafeArea(
         child: HomeViewBody(),
       ),
-      bottomNavigationBar: const CusotmBottomNavigationBar(),
+      bottomNavigationBar: CusotmBottomNavigationBar(),
     );
   }
 }
