@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/widgets/attendance_view_body.dart';
 import 'package:halaqti_app/widgets/custom_appBar.dart';
+import 'package:halaqti_app/widgets/custom_bottom_navigation_bar.dart';
 
 class AttendanceView extends StatelessWidget {
   const AttendanceView({super.key});
@@ -12,6 +14,13 @@ class AttendanceView extends StatelessWidget {
       body: attendanceViewBody(
         dateTime: DateTime.now(),
       ),
+      bottomNavigationBar: CusotmBottomNavigationBar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text("حفظ"),
+        backgroundColor: KMainColor,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/methods/show_date_picker.dart';
 import 'package:halaqti_app/widgets/custom_button.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
+import 'package:halaqti_app/widgets/list_spreated_attendance_of_students.dart';
 
 class attendanceViewBody extends StatelessWidget {
   const attendanceViewBody({
@@ -33,10 +34,8 @@ class attendanceViewBody extends StatelessWidget {
           ),
         ),
         CustomVerticalSize(),
-
-        // Expanded(child: ListView.builder(itemBuilder: (context, index) {
-        //   return ListTile();
-        // }))
+        Divider(),
+        Expanded(child: ListAttendanceStudents())
       ],
     );
   }
