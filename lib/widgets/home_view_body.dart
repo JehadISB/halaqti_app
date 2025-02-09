@@ -11,12 +11,16 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 240,
+        SizedBox(
+          height: 5,
+        ),
+        SizedBox(
+          height: 190,
+          //width: (MediaQuery.of(context).size.width) * 0.8,
           child: CustomCarouselView(),
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         Expanded(
           child: Container(
@@ -36,10 +40,10 @@ class HomeViewBody extends StatelessWidget {
                     shrinkWrap: true,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15,
-                    ),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 15,
+                            mainAxisExtent: 180),
                     itemCount: 6,
                     itemBuilder: (context, index) {
                       return Card(
@@ -56,7 +60,7 @@ class HomeViewBody extends StatelessWidget {
                             const Expanded(child: Text("الطلاب"))
                           ],
                         ),
-                        color: Colors.cyanAccent,
+                        color: KMainColor,
                       );
                     }),
               ),

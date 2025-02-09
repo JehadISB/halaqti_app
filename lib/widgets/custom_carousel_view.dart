@@ -10,8 +10,8 @@ class CustomCarouselView extends StatelessWidget {
     return CarouselView(
         itemSnapping: true,
         elevation: 4,
-        padding: EdgeInsets.all(8),
-        itemExtent: MediaQuery.of(context).size.width - 32,
+        // padding: EdgeInsets.all(8),
+        itemExtent: (MediaQuery.of(context).size.width) * 0.8,
         children: List.generate(8, (int index) {
           return Container(
             color: Colors.amber,
