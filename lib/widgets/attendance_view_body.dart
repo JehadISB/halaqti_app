@@ -4,6 +4,7 @@ import 'package:halaqti_app/methods/show_date_picker.dart';
 import 'package:halaqti_app/widgets/custom_button.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
 import 'package:halaqti_app/widgets/list_spreated_attendance_of_students.dart';
+import 'package:intl/intl.dart';
 
 class attendanceViewBody extends StatelessWidget {
   const attendanceViewBody({
@@ -28,8 +29,8 @@ class attendanceViewBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("عام:${dateTime.year.toString()}"),
-              Text("الشهر:${dateTime.month.toString()} "),
-              Text("اليوم:${dateTime.day.toString()}"),
+              Text("الشهر:${DateFormat("MMMM").format(dateTime)} "),
+              Text("اليوم:${DateFormat("EEEE").format(dateTime)}"),
             ],
           ),
         ),
