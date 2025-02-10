@@ -14,7 +14,7 @@ class HalaqtiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Students(),
+      home: AttendanceView(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Alexandria"),
     );

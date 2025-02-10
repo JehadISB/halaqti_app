@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/methods/show_date_picker.dart';
-import 'package:halaqti_app/widgets/custom_button.dart';
+import 'package:halaqti_app/widgets/custom_horizontal_size.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
-import 'package:halaqti_app/widgets/list_spreated_attendance_of_students.dart';
 import 'package:intl/intl.dart';
 
 class attendanceViewBody extends StatelessWidget {
@@ -20,9 +18,42 @@ class attendanceViewBody extends StatelessWidget {
         const SizedBox(
           height: 15,
         ),
-        CustomButton(
-          onTap: () => ShowDateTime(context: context, dateTime: dateTime),
+        Row(
+          children: [
+            Text("التاريخ"),
+            CustomHorizontalSize(),
+            Container(
+              width: 210,
+              height: 40,
+              child: TextField(
+                enabled: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber), // Border color
+                    // No border radius means sharp corners
+                  ),
+                  hintText: "انقر على الأيقونة لفتح التقويم",
+                  hintStyle:
+                      TextStyle(fontSize: 12, fontFamily: "NotoNaskhArabic"),
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        ShowDateTime(context: context, dateTime: dateTime);
+                      },
+                      icon: Icon(Icons.calendar_month)),
+                ),
+              ),
+            ),
+            CustomHorizontalSize(),
+            IconButton(
+                onPressed: () {
+                  ShowDateTime(context: context, dateTime: dateTime);
+                },
+                icon: Icon(Icons.calendar_month)),
+          ],
         ),
+        // CustomButton(
+        //   onTap: () => ShowDateTime(context: context, dateTime: dateTime),
+        // ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Row(
@@ -46,7 +77,7 @@ class attendanceViewBody extends StatelessWidget {
           ],
         ),
         const Divider(),
-        const Expanded(child: ListAttendanceStudents())
+        //const Expanded(child: ListAttendanceStudents())
       ],
     );
   }
