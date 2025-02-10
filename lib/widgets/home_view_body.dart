@@ -36,9 +36,9 @@ class HomeViewBody extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: const CustomGridViewBuilder(
-                  crossAxisCount: 5,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 15,
-                  mainAxisExtent: 5,
+                  mainAxisExtent: 180,
                   mainAxisSpacing: 5,
                   cardTitle: "الطلاب",
                   itemCount: 10,

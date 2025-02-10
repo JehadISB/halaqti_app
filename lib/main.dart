@@ -1,6 +1,7 @@
 // in the name of allah the most gracious the most merciful
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/views/all_students_view.dart';
+import 'package:halaqti_app/views/home_view.dart';
 import 'package:halaqti_app/views/students.dart';
 
 void main() {
