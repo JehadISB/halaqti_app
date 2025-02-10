@@ -3,7 +3,6 @@ import 'package:halaqti_app/constants/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(60);
 
   const CustomAppBar({

@@ -13,7 +13,7 @@ class CusotmBottomNavigationBar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-          child: const GNav(
+          child: GNav(
               iconSize: 20,
               backgroundColor: Colors.white,
               activeColor: Colors.amber,

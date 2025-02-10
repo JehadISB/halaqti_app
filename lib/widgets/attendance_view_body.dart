@@ -24,7 +24,7 @@ class attendanceViewBody extends StatelessWidget {
           onTap: () => ShowDateTime(context: context, dateTime: dateTime),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -34,9 +34,19 @@ class attendanceViewBody extends StatelessWidget {
             ],
           ),
         ),
-        CustomVerticalSize(),
-        Divider(),
-        Expanded(child: ListAttendanceStudents())
+        const CustomVerticalSize(),
+        Row(
+          children: [
+            const Text("تحضير الجميع"),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.circle),
+              iconSize: 30,
+            ),
+          ],
+        ),
+        const Divider(),
+        const Expanded(child: ListAttendanceStudents())
       ],
     );
   }

@@ -17,14 +17,14 @@ class ListAttendanceStudents extends StatelessWidget {
             width: 60,
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.circle),
+              icon: const Icon(Icons.circle),
               iconSize: 60,
             ),
           ),
-          title: Text("اسم الطالب"),
+          title: const Text("اسم الطالب"),
         );
       },
-      separatorBuilder: (BuildContext context, int index) => Divider(),
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }
 }

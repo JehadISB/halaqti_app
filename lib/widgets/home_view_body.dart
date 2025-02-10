@@ -11,10 +11,10 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
-        SizedBox(
+        const SizedBox(
           height: 190,
           //width: (MediaQuery.of(context).size.width) * 0.8,
           child: CustomCarouselView(),

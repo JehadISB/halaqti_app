@@ -14,10 +14,10 @@ class AttendanceView extends StatelessWidget {
       body: attendanceViewBody(
         dateTime: DateTime.now(),
       ),
-      bottomNavigationBar: CusotmBottomNavigationBar(),
+      bottomNavigationBar: const CusotmBottomNavigationBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Text("حفظ"),
+        child: const Text("حفظ"),
         backgroundColor: KMainColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
