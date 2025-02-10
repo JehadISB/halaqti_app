@@ -4,8 +4,8 @@ import 'package:halaqti_app/widgets/custom_appBar.dart';
 import 'package:halaqti_app/widgets/custom_bottom_navigation_bar.dart';
 import 'package:halaqti_app/widgets/students_view_body.dart';
 
-class Students extends StatelessWidget {
-  const Students({super.key});
+class StudentsView extends StatelessWidget {
+  const StudentsView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 // in the name of allah the most gracious the most merciful
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/views/all_students_view.dart';
 import 'package:halaqti_app/views/students.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class HalaqtiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Students(),
+      home: AllStudentsView(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Alexandria"),
     );
