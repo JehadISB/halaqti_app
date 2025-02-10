@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
       body: SafeArea(
         child: HomeViewBody(),
       ),
-      bottomNavigationBar: CusotmBottomNavigationBar(),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

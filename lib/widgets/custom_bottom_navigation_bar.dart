@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:halaqti_app/constants/colors.dart';
 
-class CusotmBottomNavigationBar extends StatelessWidget {
-  const CusotmBottomNavigationBar({
+class CustomBottomNavigationBar extends StatelessWidget {
+  const CustomBottomNavigationBar({
     super.key,
   });
 

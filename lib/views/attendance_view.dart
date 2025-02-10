@@ -14,7 +14,7 @@ class AttendanceView extends StatelessWidget {
       body: attendanceViewBody(
         dateTime: DateTime.now(),
       ),
-      bottomNavigationBar: const CusotmBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Text("حفظ"),

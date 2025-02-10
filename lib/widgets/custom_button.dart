@@ -5,8 +5,12 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.onTap,
+    required this.text,
+    this.color,
   });
   final void Function()? onTap;
+  final String text;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,15 +19,16 @@ class CustomButton extends StatelessWidget {
         width: (MediaQuery.of(context).size.width) * 0.5,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: KMainColor, borderRadius: BorderRadius.circular(30)),
-        child: const Row(
+          color: color ?? KMainColor,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("اختر التاريخ"),
-            SizedBox(
+            Text(text),
+            const SizedBox(
               width: 10,
             ),
-            Icon(Icons.calendar_month),
           ],
         ),
       ),
