@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/constants/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -14,7 +15,14 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(icon: Icon(icon), hintText: hintText),
+      decoration: InputDecoration(
+          icon: Icon(icon),
+          hintText: hintText,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: KMainColor,
+              ))),
       keyboardType: keyboardType,
     );
   }
