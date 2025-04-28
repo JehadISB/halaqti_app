@@ -51,7 +51,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 ),
                 GButton(
                   icon: Icons.person_search,
-                  text: "تحضير الطلاب",
+                  text: "التحضير",
                 ),
                 GButton(
                   icon: Icons.home,

@@ -1,0 +1,2 @@
+D:/MyAppsProjects/halaqti_app_after_ramadan/halaqti_app/android/app/.cxx/Debug/1ze453f7/x86/CMakeFiles/edit_cache.dir
+D:/MyAppsProjects/halaqti_app_after_ramadan/halaqti_app/android/app/.cxx/Debug/1ze453f7/x86/CMakeFiles/rebuild_cache.dir
