@@ -15,6 +15,7 @@ class CustomAlertDialogBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
      // height: (MediaQuery.of(context).size.height) * 0.5,
+
       child: Form(
         child: SingleChildScrollView(
           child: Column(
@@ -24,6 +25,7 @@ class CustomAlertDialogBody extends StatelessWidget {
               const CustomTextFormField(
                 icon: Icons.person,
                 hintText: "اسم الطالب",
+
               ),
               CustomVerticalSize(),
               const CustomTextFormField(
@@ -49,8 +51,6 @@ class CustomAlertDialogBody extends StatelessWidget {
                 keyboardType: TextInputType.number,
               ),
               CustomVerticalSize(),
-              git checkout -b branch-name
-
               const CustomTextFormField(
                 icon: Icons.auto_stories,
                 hintText: "عدد الأجزاء",

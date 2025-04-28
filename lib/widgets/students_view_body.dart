@@ -12,26 +12,26 @@ class StudentsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomVerticalSize(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            DropdownButton(items: const [
-              DropdownMenuItem(
-                value: "halaqaName",
-                child: Text("اسم الحلقة"),
-              )
-            ], onChanged: null),
-            DropdownButton(items: const [
-              DropdownMenuItem(
-                value: "teacherName",
-                child: Text("اسم المعلم"),
-              )
-            ], onChanged: null),
-          ],
-        ),
-        const CustomVerticalSize(),
-        const Divider(),
+        //const CustomVerticalSize(),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: [
+        //     DropdownButton(items: const [
+        //       DropdownMenuItem(
+        //         value: "halaqaName",
+        //         child: Text("اسم الحلقة"),
+        //       )
+        //     ], onChanged: null),
+        //     DropdownButton(items: const [
+        //       DropdownMenuItem(
+        //         value: "teacherName",
+        //         child: Text("اسم المعلم"),
+        //       )
+        //     ], onChanged: null),
+        //   ],
+        // ),
+        const CustomVerticalSize(height: 8,),
+        // const Divider(),
         Expanded(
           child: ListView.separated(
             itemBuilder: (context, index) {
