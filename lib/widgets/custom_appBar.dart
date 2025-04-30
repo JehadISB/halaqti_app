@@ -14,6 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: const Text("hlaqati app"),
       backgroundColor: KMainColor,
+
     );
   }
 }

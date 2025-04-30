@@ -6,15 +6,23 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.icon,
     this.hintText,
-    this.keyboardType,
+    this.keyboardType, this.controller,
   });
   final IconData? icon;
   final String? hintText;
   final TextInputType? keyboardType;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller ,
+      validator:  (value) {
+        if (value == null || value.trim().isEmpty) {
+          return 'الرجاء إدخال الاسم';
+        }
+        return null;
+      },
       decoration: InputDecoration(
           icon: Icon(icon),
           hintText: hintText,

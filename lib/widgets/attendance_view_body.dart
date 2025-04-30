@@ -5,6 +5,8 @@ import 'package:halaqti_app/widgets/custom_horizontal_size.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
 import 'package:intl/intl.dart';
 
+import 'list_spreated_attendance_of_students.dart';
+
 class attendanceViewBody extends StatelessWidget {
   const attendanceViewBody({
     super.key,
@@ -46,7 +48,7 @@ class attendanceViewBody extends StatelessWidget {
           ],
         ),
         const Divider(),
-        //const Expanded(child: ListAttendanceStudents())
+        const Expanded(child: ListAttendanceStudents())
       ],
     );
   }
