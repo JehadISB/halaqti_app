@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/widgets/custom_alert_dialog_body.dart';
 import 'package:halaqti_app/widgets/custom_appBar.dart';
 import 'package:halaqti_app/widgets/custom_bottom_navigation_bar.dart';
@@ -27,7 +28,7 @@ class StudentsView extends StatelessWidget {
             ),
           );
         },
-        child: const Icon(Icons.person_add_alt_1),
+        child: const Icon(Icons.person_add_alt_1,color: KBackgroundColor,),backgroundColor: KMainColor,
       ),
     );
   }

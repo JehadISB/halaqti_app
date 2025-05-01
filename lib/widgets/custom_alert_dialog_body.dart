@@ -51,7 +51,7 @@ class _CustomAlertDialogBodyState extends State<CustomAlertDialogBody> {
        registrationYear=int.parse(registrationYearController.text.trim());
        insertToDatabase();
        Navigator.pop(context);
-       customShowSnackBar(context,message: 'تم إضافة الطالب بنجاح ✅',backgroundColor: KMainColor);
+       customShowSnackBar(context,message: '✅  تم إضافة الطالب بنجاح',backgroundColor: KMainColor);
      }else{
        showDialog(context: context, builder: (context)=>CustomDialogWidget(
          title: "فضلا",
@@ -61,7 +61,8 @@ class _CustomAlertDialogBodyState extends State<CustomAlertDialogBody> {
      }
    }
   insertToDatabase(){
-    sqlDb.insertData("INSERT INTO students (student_name,education_level,age,father_phone,home_phone,part_count,registration_year,halaqa_id) VALUES ('$studentName','$educationLevel','$age','$fatherPhone','$homePhone','$partCount','$registrationYear',)");
+    sqlDb.insertData("""INSERT INTO student (student_name,education_level,age,father_phone,home_phone,part_count,registration_year,halaqa_id)
+     VALUES ('$studentName','$educationLevel','$age','$fatherPhone','$homePhone','$partCount','$registrationYear',1)""");
   }
   @override
   Widget build(BuildContext context) {
