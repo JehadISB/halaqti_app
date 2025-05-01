@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/database/sqlDb.dart';
 import 'package:halaqti_app/widgets/custom_button.dart';
+import 'package:halaqti_app/widgets/custom_dialog_widget.dart';
 import 'package:halaqti_app/widgets/custom_snackbar.dart';
 import 'package:halaqti_app/widgets/custom_text_form_field.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
@@ -50,9 +51,12 @@ class _CustomAlertDialogBodyState extends State<CustomAlertDialogBody> {
        insertToDatabase();
        Navigator.pop(context);
        customShowSnackBar(context,message: 'تم إضافة طالب بنجاح ✅');
-
      }else{
-       customShowSnackBar(context,message: 'فضلا، املأ الحقول الفارغة ⛔');
+       showDialog(context: context, builder: (context)=>CustomDialogWidget(
+         title: "فضلا",
+         subtitle: "املأ الحقول الفارغة",
+
+       ));
      }
    }
   insertToDatabase(){
