@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/database/sqlDb.dart';
 import 'package:halaqti_app/widgets/custom_button.dart';
 import 'package:halaqti_app/widgets/custom_dialog_widget.dart';
@@ -50,7 +51,7 @@ class _CustomAlertDialogBodyState extends State<CustomAlertDialogBody> {
        registrationYear=int.parse(registrationYearController.text.trim());
        insertToDatabase();
        Navigator.pop(context);
-       customShowSnackBar(context,message: 'تم إضافة طالب بنجاح ✅');
+       customShowSnackBar(context,message: 'تم إضافة الطالب بنجاح ✅',backgroundColor: KMainColor);
      }else{
        showDialog(context: context, builder: (context)=>CustomDialogWidget(
          title: "فضلا",
