@@ -42,17 +42,29 @@ class _UpdateStudentAlertDialogBodyState extends State<UpdateStudentAlertDialogB
   String?  homePhone;
   int?  partCount;
   int?  registrationYear;
+  @override
+  void initState() {
+    super.initState();
+    studentNameController.text = widget.student.studentName;
+    educationLevelController.text = widget.student.educationLevel ?? '';
+    ageController.text = widget.student.age?.toString() ?? '';
+    fatherPoneController.text = widget.student.fatherPhone ?? '';
+    homePhoneController.text = widget.student.homePhone ?? '';
+    partCountController.text = widget.student.partCount?.toString() ?? '';
+    registrationYearController.text = widget.student.registrationYear?.toString() ?? '';
+  }
+
 
   void submitForm(){
-    if(studentNameController.text.trim().isEmpty){
+    if(formKey.currentState!.validate()){
       widget.student.studentName=studentNameController.text.trim();
       widget.student.educationLevel=educationLevelController.text.trim();
-      widget.student.age=int.parse(ageController.text.trim());
+      widget.student.age= ageController.text.trim().isNotEmpty ? int.parse(ageController.text.trim()) : 0;
       widget.student.fatherPhone=fatherPoneController.text.trim();
       widget.student.homePhone=homePhoneController.text.trim();
-      widget.student.partCount=int.parse(partCountController.text.trim());
-      widget.student.registrationYear=int.parse(registrationYearController.text.trim());
-      updateStudentInfo();
+      widget.student.partCount=partCountController.text.trim().isNotEmpty ? int.parse(partCountController.text.trim()) : 0;
+      widget.student.registrationYear=registrationYearController.text.trim().isNotEmpty ? int.parse(registrationYearController.text.trim()) : 0;
+      updateStudentInfo(student: widget.student);
       Navigator.pop(context);
       customShowSnackBar(context,message: '✅  تم تعديل بيانات الطالب بنجاح',backgroundColor: KMainColor);
 
@@ -61,9 +73,18 @@ class _UpdateStudentAlertDialogBodyState extends State<UpdateStudentAlertDialogB
     }
 
   }
-  updateStudentInfo(){
-    sqlDb.updateData("""INSERT INTO student (student_name,education_level,age,father_phone,home_phone,part_count,registration_year,halaqa_id)
-     VALUES ('$studentName','$educationLevel','$age','$fatherPhone','$homePhone','$partCount','$registrationYear',1)""");
+  updateStudentInfo({required StudentModel student}) async {
+   await sqlDb.updateData('''
+  UPDATE student SET 
+    student_name = '${student.studentName}', 
+    education_level = '${student.educationLevel}', 
+    age = ${student.age}, 
+    father_phone = '${student.fatherPhone}', 
+    home_phone = '${student.homePhone}', 
+    part_count = ${student.partCount}, 
+    registration_year = ${student.registrationYear}
+  WHERE stu_id = ${student.stuID};
+  ''');
   }
   @override
   Widget build(BuildContext context) {
@@ -79,49 +100,85 @@ class _UpdateStudentAlertDialogBodyState extends State<UpdateStudentAlertDialogB
               // const Spacer(),
               CustomTextFormField(
                 icon: Icons.person,colorIcon: KMainColor,
-                hintText: widget.student.studentName,
+                hintText:"اسم الطالب",
                 controller:studentNameController ,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'الرجاء إدخال الاسم';
+                  }
+                  if (!RegExp(r'^[a-zA-Z\u0621-\u064A\u066E\u066F\u0671-\u06D3 ]+$').hasMatch(value.trim())){
+                    return 'غير مسموح بالرموز والأرقام';
+                  }
+                  return null;
+                },
               ),
               CustomVerticalSize(),
               CustomTextFormField(
                 icon: Icons.school,colorIcon: KMainColor,
-                hintText: widget.student.educationLevel??"المرحلة الدراسية",
+                hintText: "المرحلة الدراسية",
                 controller: educationLevelController,
               ),
               CustomVerticalSize(),
               CustomTextFormField(
                 icon: Icons.event,colorIcon: KMainColor,
-                hintText: widget.student.age.toString()?? "العمر",
+                hintText:"العمر",
                 keyboardType: TextInputType.number,
                 controller: ageController,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return null;
+                  }
+                  if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
+                    return 'مسموح بالأرقام فقط';
+                  }
+                  return null;
+                },
               ),
               CustomVerticalSize(),
               CustomTextFormField(
                 icon: Icons.contact_phone,colorIcon: KMainColor,
-                hintText:widget.student.fatherPhone?? "جوال ولي الأمر",
+                hintText:"جوال ولي الأمر",
                 keyboardType: TextInputType.number,
                 controller: fatherPoneController,
               ),
               CustomVerticalSize(),
               CustomTextFormField(
                 icon: Icons.call,colorIcon: KMainColor,
-                hintText: widget.student.homePhone?? "هاتف المنزل",
+                hintText: "هاتف المنزل",
                 keyboardType: TextInputType.number,
                 controller: homePhoneController,
               ),
               CustomVerticalSize(),
               CustomTextFormField(
                 icon: Icons.auto_stories,colorIcon: KMainColor,
-                hintText: widget.student.partCount.toString()??"عدد الأجزاء",
+                hintText:"عدد الأجزاء",
                 keyboardType: TextInputType.number,
                 controller:partCountController ,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return null;
+                  }
+                  if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
+                    return 'مسموح بالأرقام فقط';
+                  }
+                  return null;
+                },
               ),
               CustomVerticalSize(),
               CustomTextFormField(
                 icon: Icons.calendar_month,colorIcon: KMainColor,
-                hintText: widget.student.registrationYear.toString()??"سنة التسجيل",
+                hintText: "سنة التسجيل",
                 keyboardType: TextInputType.datetime,
                 controller: registrationYearController,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return null;
+                  }
+                  if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
+                    return 'مسموح بالأرقام فقط';
+                  }
+                  return null;
+                },
               ),
               CustomVerticalSize(),
               // const Spacer(),

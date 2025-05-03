@@ -45,14 +45,14 @@ class _addStudentAlertDialogBodyState extends State<addStudentAlertDialogBody> {
      if(formKey.currentState!.validate()){
        studentName=studentNameController.text.trim();
        educationLevel=educationLevelController.text.trim();
-       age=int.parse(ageController.text.trim());
+       age = ageController.text.trim().isNotEmpty ? int.parse(ageController.text.trim()) : 0;
        fatherPhone=fatherPoneController.text.trim();
        homePhone=homePhoneController.text.trim();
-       partCount=int.parse(partCountController.text.trim());
-       registrationYear=int.parse(registrationYearController.text.trim());
+       partCount = partCountController.text.trim().isNotEmpty ? int.parse(partCountController.text.trim()) : 0;
+       registrationYear = registrationYearController.text.trim().isNotEmpty ? int.parse(registrationYearController.text.trim()) : 0;
        insertToDatabase();
        Navigator.pop(context);
-       customShowSnackBar(context,message: '✅  تم إضافة الطالب بنجاح',backgroundColor: KMainColor);
+       customShowSnackBar(context,message: '✅  تم إضافة الطالب بنجاح',backgroundColor: KDoneColor);
      }else{
        showDialog(context: context, builder: (context)=>CustomDialogWidget(
          title: "فضلا",
@@ -62,8 +62,10 @@ class _addStudentAlertDialogBodyState extends State<addStudentAlertDialogBody> {
      }
    }
   insertToDatabase(){
+     print("BEFORE===('$studentName','$educationLevel','$age','$fatherPhone','$homePhone','$partCount','$registrationYear',1)");
     sqlDb.insertData("""INSERT INTO student (student_name,education_level,age,father_phone,home_phone,part_count,registration_year,halaqa_id)
      VALUES ('$studentName','$educationLevel','$age','$fatherPhone','$homePhone','$partCount','$registrationYear',1)""");
+     print("AFTER====('$studentName','$educationLevel','$age','$fatherPhone','$homePhone','$partCount','$registrationYear',1)");
   }
   @override
   Widget build(BuildContext context) {

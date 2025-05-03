@@ -3,7 +3,9 @@ import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/database/sqlDb.dart';
 import 'package:halaqti_app/models/student_model.dart';
 import 'package:halaqti_app/widgets/add_student_alert_dialog_body.dart';
+import 'package:halaqti_app/widgets/custom_dialog_widget.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
+import 'package:halaqti_app/widgets/delete_student_dialog_body.dart';
 import 'package:halaqti_app/widgets/update_student_alert_dialog_body.dart';
 
 class StudentsViewBody extends StatefulWidget {
@@ -60,13 +62,13 @@ class _StudentsViewBodyState extends State<StudentsViewBody> {
             builder: (context, snapshot) {
               final students=snapshot.data??[];
               if(snapshot.connectionState==ConnectionState.waiting){
-                return Center(child: CircularProgressIndicator(color: KMainColor,strokeAlign: 6,));
+                return const Center(child: CircularProgressIndicator(color: KMainColor,strokeAlign: 6,));
               }
               if(snapshot.hasError){
-                return Center(child: Text("حدث خطأ أثناء عرض أسماء الطلاب ، يرجى إعادة المحاولة",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
+                return const Center(child: Text("حدث خطأ أثناء عرض أسماء الطلاب ، يرجى إعادة المحاولة",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
               }
               if(students.isEmpty){
-                return Center(child: Text("لا يوجد طلاب حاليا ، يرجى إضافة طالب",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
+                return const Center(child: Text("لا يوجد طلاب حاليا ، يرجى إضافة طالب",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
               }
               return ListView.separated(
                 itemCount: students.length,
@@ -80,7 +82,7 @@ class _StudentsViewBodyState extends State<StudentsViewBody> {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: Text("تعديل بيانات طالب"),
+                              title: const Text("تعديل بيانات طالب"),
                               content: UpdateStudentAlertDialogBody(
                                 student: students[index],
                                 textBtn: "تعديل",
@@ -92,9 +94,14 @@ class _StudentsViewBodyState extends State<StudentsViewBody> {
                         icon: const Icon(Icons.edit),
                         color: Colors.amber,
                       ),
-                      const IconButton(
-                          onPressed: null,
-                          icon: Icon(
+                       IconButton(
+                          onPressed: (){
+                            showDialog(context: context, builder: (context)=> DeleteStudentDialogBody(
+                              student:  students[index],
+                                title: "حذف طالب",
+                                subtitle: "هل أنت متأكد من حذف الطالب؟"));
+                          },
+                          icon: const Icon(
                             Icons.delete,
                             color: Colors.red,
                           )),

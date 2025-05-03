@@ -7,7 +7,7 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.icon,
     this.hintText,
-    this.keyboardType, this.controller, this.colorIcon, this.validator,
+    this.keyboardType, this.controller, this.colorIcon, this.validator,this.initialValue
   });
   final IconData? icon;
   final String? hintText;
@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final Color? colorIcon;
   final String? Function(String?)? validator;
+  final String? initialValue;
 
 
   @override
@@ -25,8 +26,10 @@ class CustomTextFormField extends StatelessWidget {
       // inputFormatters: [
       //   FilteringTextInputFormatter.digitsOnly, // ← يمنع أي شيء غير الأرقام
       // ],
+     // initialValue:initialValue ,
       decoration: InputDecoration(
           icon: Icon(icon,color:colorIcon ,),
+
           hintText: hintText,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
