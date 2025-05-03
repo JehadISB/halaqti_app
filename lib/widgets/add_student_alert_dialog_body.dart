@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/database/sqlDb.dart';
+import 'package:halaqti_app/models/student_model.dart';
 import 'package:halaqti_app/widgets/custom_button.dart';
 import 'package:halaqti_app/widgets/custom_dialog_widget.dart';
 import 'package:halaqti_app/widgets/custom_snackbar.dart';
@@ -8,9 +9,9 @@ import 'package:halaqti_app/widgets/custom_text_form_field.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
 
 SqlDb sqlDb=SqlDb();
-class CustomAlertDialogBody extends StatefulWidget {
+class addStudentAlertDialogBody extends StatefulWidget {
 
-  const CustomAlertDialogBody({
+  const addStudentAlertDialogBody({
     super.key,
     required this.textBtn,
     this.color,
@@ -20,10 +21,10 @@ class CustomAlertDialogBody extends StatefulWidget {
 
 
   @override
-  State<CustomAlertDialogBody> createState() => _CustomAlertDialogBodyState();
+  State<addStudentAlertDialogBody> createState() => _addStudentAlertDialogBodyState();
 }
 
-class _CustomAlertDialogBodyState extends State<CustomAlertDialogBody> {
+class _addStudentAlertDialogBodyState extends State<addStudentAlertDialogBody> {
   final formKey= GlobalKey<FormState>();
   final TextEditingController studentNameController= TextEditingController();
   final TextEditingController educationLevelController= TextEditingController();
@@ -77,50 +78,86 @@ class _CustomAlertDialogBodyState extends State<CustomAlertDialogBody> {
             children: [
               // const Spacer(),
               CustomTextFormField(
-                icon: Icons.person,
+                icon: Icons.person,colorIcon: KMainColor,
                 hintText: "اسم الطالب",
                 controller:studentNameController ,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'الرجاء إدخال الاسم';
+                  }
+                  if (!RegExp(r'^[a-zA-Z\u0621-\u064A\u066E\u066F\u0671-\u06D3 ]+$').hasMatch(value.trim())){
+                    return 'غير مسموح بالرموز والأرقام';
+                  }
+                  return null;
+                },
               ),
               CustomVerticalSize(),
                CustomTextFormField(
-                icon: Icons.school,
+                icon: Icons.school,colorIcon: KMainColor,
                 hintText: "المرحلة الدراسية",
                  controller: educationLevelController,
               ),
               CustomVerticalSize(),
                CustomTextFormField(
-                icon: Icons.event,
+                icon: Icons.event,colorIcon: KMainColor,
                 hintText: "العمر",
                 keyboardType: TextInputType.number,
                  controller: ageController,
+                 validator: (value) {
+                   if (value == null || value.trim().isEmpty) {
+                     return null;
+                   }
+                   if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
+                     return 'مسموح بالأرقام فقط';
+                   }
+                   return null;
+                 },
               ),
               CustomVerticalSize(),
                CustomTextFormField(
-                icon: Icons.contact_phone,
+                icon: Icons.contact_phone,colorIcon: KMainColor,
                 hintText: "جوال ولي الأمر",
                 keyboardType: TextInputType.number,
                  controller: fatherPoneController,
               ),
               CustomVerticalSize(),
                CustomTextFormField(
-                icon: Icons.call,
+                icon: Icons.call,colorIcon: KMainColor,
                 hintText: "هاتف المنزل",
                 keyboardType: TextInputType.number,
                  controller: homePhoneController,
               ),
               CustomVerticalSize(),
                CustomTextFormField(
-                icon: Icons.auto_stories,
+                icon: Icons.auto_stories,colorIcon: KMainColor,
                 hintText: "عدد الأجزاء",
                 keyboardType: TextInputType.number,
                 controller:partCountController ,
+                 validator: (value) {
+                   if (value == null || value.trim().isEmpty) {
+                     return null;
+                   }
+                   if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
+                     return 'مسموح بالأرقام فقط';
+                   }
+                   return null;
+                 },
               ),
               CustomVerticalSize(),
                CustomTextFormField(
-                icon: Icons.calendar_month,
+                icon: Icons.calendar_month,colorIcon: KMainColor,
                 hintText: "سنة التسجيل",
                 keyboardType: TextInputType.datetime,
                  controller: registrationYearController,
+                 validator: (value) {
+                   if (value == null || value.trim().isEmpty) {
+                     return null;
+                   }
+                   if (!RegExp(r'^\d+$').hasMatch(value.trim())) {
+                     return 'مسموح بالأرقام فقط';
+                   }
+                   return null;
+                 },
               ),
               CustomVerticalSize(),
               // const Spacer(),

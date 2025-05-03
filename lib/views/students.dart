@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/constants/colors.dart';
-import 'package:halaqti_app/widgets/custom_alert_dialog_body.dart';
+import 'package:halaqti_app/widgets/add_student_alert_dialog_body.dart';
 import 'package:halaqti_app/widgets/custom_appBar.dart';
 import 'package:halaqti_app/widgets/custom_bottom_navigation_bar.dart';
 import 'package:halaqti_app/widgets/custom_drawer.dart';
@@ -22,7 +22,7 @@ class StudentsView extends StatelessWidget {
             context: context,
             builder: (context) => const AlertDialog(
               title: Text("إضافة طالب جديد"),
-              content: CustomAlertDialogBody(
+              content: addStudentAlertDialogBody(
                 textBtn: "إضافة طالب",
               ),
             ),

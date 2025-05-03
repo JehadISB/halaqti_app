@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/database/sqlDb.dart';
-import 'package:halaqti_app/widgets/custom_alert_dialog_body.dart';
+import 'package:halaqti_app/models/student_model.dart';
+import 'package:halaqti_app/widgets/add_student_alert_dialog_body.dart';
 import 'package:halaqti_app/widgets/custom_vertical_size.dart';
+import 'package:halaqti_app/widgets/update_student_alert_dialog_body.dart';
 
 class StudentsViewBody extends StatefulWidget {
   const StudentsViewBody({
@@ -15,17 +17,14 @@ class StudentsViewBody extends StatefulWidget {
 
 class _StudentsViewBodyState extends State<StudentsViewBody> {
   SqlDb sqlDb=SqlDb();
+  List<StudentModel> studentModel=[];
 
-  Future<List<String>> getStudentsFromDatabase() async{
-    List<String>? studentsName=[];
-    List<Map> data= await sqlDb.readData("SELECT student_name FROM student");
-    print("==========$data==============");
+  Future<List<StudentModel>> getStudentsFromDatabase() async{
+    List<Map<String,dynamic>> data= await sqlDb.readData("SELECT * FROM student");
     if(data.isNotEmpty){
-      data.forEach((student){
-        studentsName.add(student['student_name']);
-      });
+      studentModel=data.map((student)=>StudentModel.fromMap(student)).toList();
     }
-    return studentsName;
+    return studentModel;
   }
 
   @override
@@ -56,7 +55,7 @@ class _StudentsViewBodyState extends State<StudentsViewBody> {
         // const Divider(),
         Expanded(
 
-          child: FutureBuilder<List<String>>(
+          child: FutureBuilder<List<StudentModel>>(
             future: getStudentsFromDatabase(),
             builder: (context, snapshot) {
               final students=snapshot.data??[];
@@ -65,27 +64,25 @@ class _StudentsViewBodyState extends State<StudentsViewBody> {
               }
               if(snapshot.hasError){
                 return Center(child: Text("حدث خطأ أثناء عرض أسماء الطلاب ، يرجى إعادة المحاولة",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
-
               }
               if(students.isEmpty){
                 return Center(child: Text("لا يوجد طلاب حاليا ، يرجى إضافة طالب",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
               }
-              
-
               return ListView.separated(
                 itemCount: students.length,
     itemBuilder: (BuildContext context, int index) {
              return ListTile(
-                  title: Text(students[index]),
+                  title: Text(students[index].studentName),
                   trailing: Wrap(
                     children: [
                       IconButton(
                         onPressed: () {
                           showDialog(
                             context: context,
-                            builder: (context) => const AlertDialog(
+                            builder: (context) => AlertDialog(
                               title: Text("تعديل بيانات طالب"),
-                              content: CustomAlertDialogBody(
+                              content: UpdateStudentAlertDialogBody(
+                                student: students[index],
                                 textBtn: "تعديل",
                                 color: KSecondryColor,
                               ),

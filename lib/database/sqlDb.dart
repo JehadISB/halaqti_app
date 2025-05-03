@@ -71,7 +71,7 @@ class SqlDb{
 
   readData(String sql) async {
     Database? database=await db;
-    List<Map> data= await database!.rawQuery(sql);
+    List<Map<String,dynamic>> data= await database!.rawQuery(sql);
     return data;
   }
   insertData(String sql) async {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:halaqti_app/constants/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -6,25 +7,26 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.icon,
     this.hintText,
-    this.keyboardType, this.controller,
+    this.keyboardType, this.controller, this.colorIcon, this.validator,
   });
   final IconData? icon;
   final String? hintText;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
+  final Color? colorIcon;
+  final String? Function(String?)? validator;
+
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller ,
-      validator:  (value) {
-        if (value == null || value.trim().isEmpty) {
-          return 'الرجاء إدخال الاسم';
-        }
-        return null;
-      },
+      validator: validator,
+      // inputFormatters: [
+      //   FilteringTextInputFormatter.digitsOnly, // ← يمنع أي شيء غير الأرقام
+      // ],
       decoration: InputDecoration(
-          icon: Icon(icon),
+          icon: Icon(icon,color:colorIcon ,),
           hintText: hintText,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
