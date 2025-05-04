@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/views/home_view.dart';
 import 'package:halaqti_app/views/settings_view.dart';
+import 'package:halaqti_app/views/students.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -57,9 +58,12 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.group),
-            title: Text('Halaqat List'),
+            title: Text('Students List'),
             onTap: () {
-              // Handle navigation
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => StudentsView()),
+              );
             },
           ),
           ListTile(

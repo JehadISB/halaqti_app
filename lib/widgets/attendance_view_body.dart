@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:halaqti_app/constants/colors.dart';
+import 'package:halaqti_app/methods/get_students_from_database.dart';
 import 'package:halaqti_app/methods/show_date_picker.dart';
 import 'package:halaqti_app/widgets/custom_date_picker.dart';
 import 'package:halaqti_app/widgets/custom_horizontal_size.dart';
@@ -48,7 +50,22 @@ class attendanceViewBody extends StatelessWidget {
           ],
         ),
         const Divider(),
-        const Expanded(child: ListAttendanceStudents())
+         Expanded(child: FutureBuilder(future: getStudentsFromDatabase(), builder: (context,snapshot){
+           final students=snapshot.data??[];
+           if(snapshot.connectionState==ConnectionState.waiting){
+             return const Center(child: CircularProgressIndicator(color: KMainColor,strokeAlign: 6,));
+           }
+           if(snapshot.hasError){
+             return const Center(child: Text("حدث خطأ أثناء عرض أسماء الطلاب ، يرجى إعادة المحاولة",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
+           }
+           if(students.isEmpty){
+             return const Center(child: Text("لا يوجد طلاب حاليا ، يرجى إضافة طالب",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,));
+           }
+           return ListAttendanceStudents(studentsList: snapshot.data,
+
+           );
+
+         })),
       ],
     );
   }

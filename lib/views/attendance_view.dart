@@ -3,6 +3,7 @@ import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/widgets/attendance_view_body.dart';
 import 'package:halaqti_app/widgets/custom_appBar.dart';
 import 'package:halaqti_app/widgets/custom_bottom_navigation_bar.dart';
+import 'package:halaqti_app/widgets/custom_drawer.dart';
 
 class AttendanceView extends StatelessWidget {
   const AttendanceView({super.key});
@@ -11,6 +12,7 @@ class AttendanceView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
+      drawer: CustomDrawer(),
       body: attendanceViewBody(
         dateTime: DateTime.now(),
       ),

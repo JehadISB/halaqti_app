@@ -62,6 +62,18 @@ class SqlDb{
         FOREIGN KEY (halaqa_id) REFERENCES halaqa(h_id) ON DELETE SET NULL
       )
     """);
+    await database.execute('''
+  CREATE TABLE attendance (
+    attendance_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER NOT NULL,
+    halaqa_id INTEGER NOT NULL,
+    date TEXT NOT NULL,
+    status TEXT CHECK(status IN ('حاضر', 'غائب', 'متأخر', 'غائب بعذر')),
+    notes TEXT,
+    FOREIGN KEY (student_id) REFERENCES student(stu_id) ON DELETE CASCADE,
+    FOREIGN KEY (halaqa_id) REFERENCES halaqa(h_id) ON DELETE CASCADE
+  )
+''');
      print("✅ Database and tables created successfully");
   }
 

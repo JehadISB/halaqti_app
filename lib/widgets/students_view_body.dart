@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:halaqti_app/constants/colors.dart';
 import 'package:halaqti_app/database/sqlDb.dart';
+import 'package:halaqti_app/methods/get_students_from_database.dart';
 import 'package:halaqti_app/models/student_model.dart';
 import 'package:halaqti_app/widgets/add_student_alert_dialog_body.dart';
 import 'package:halaqti_app/widgets/custom_dialog_widget.dart';
@@ -18,21 +19,8 @@ class StudentsViewBody extends StatefulWidget {
 }
 
 class _StudentsViewBodyState extends State<StudentsViewBody> {
-  SqlDb sqlDb=SqlDb();
-  List<StudentModel> studentModel=[];
-
-  Future<List<StudentModel>> getStudentsFromDatabase() async{
-    List<Map<String,dynamic>> data= await sqlDb.readData("SELECT * FROM student");
-    if(data.isNotEmpty){
-      studentModel=data.map((student)=>StudentModel.fromMap(student)).toList();
-    }
-    return studentModel;
-  }
-
   @override
   Widget build(BuildContext context) {
-
-
     return Column(
       children: [
         //const CustomVerticalSize(),
