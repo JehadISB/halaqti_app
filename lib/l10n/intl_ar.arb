@@ -1,0 +1,11 @@
+{
+  "loginText": "قم بتسجيل الدخول أو أنشئ حساب جديد",
+  "textLabelUserName": "اسم المستخدم",
+   "textLabelPassword": "كلمة المرور",
+  "hintTextUserName": "مثال : أبوبكر عبدالله",
+  "hintTextpassword": "14472025",
+  "doseNotHaveAccount": "إذا لم يكن لديك حساب ",
+  "navigateCreateNewAccount": "قم بإنشاء حساب جديد"
+
+
+}
